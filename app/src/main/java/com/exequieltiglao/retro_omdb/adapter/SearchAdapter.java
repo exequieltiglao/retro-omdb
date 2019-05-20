@@ -4,10 +4,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.exequieltiglao.retro_omdb.R;
-import com.exequieltiglao.retro_omdb.model.Search;
 import com.exequieltiglao.retro_omdb.model.SearchObjects;
 
 import java.util.ArrayList;
@@ -39,7 +40,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     static class SearchViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title, year, imdbID, type, poster;
+        TextView title, year, imdbID, type;
+        ImageView poster;
 
         SearchViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,7 +72,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.year.setText(item.getYear());
         holder.imdbID.setText(item.getImdbID());
         holder.type.setText(item.getType());
-        holder.poster.setText(item.getPoster());
+        //add poster
 
     }
 

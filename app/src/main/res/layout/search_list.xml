@@ -46,12 +46,13 @@
             android:layout_below="@id/imdbID"
             android:text="Type: "
             android:textColor="#000"
+            android:layout_marginBottom="5dp"
             android:textSize="15sp" />
 
-        <TextView
+        <ImageView
             android:id="@+id/poster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_below="@id/type"
             android:text="Poster: "
             android:textColor="#000"
