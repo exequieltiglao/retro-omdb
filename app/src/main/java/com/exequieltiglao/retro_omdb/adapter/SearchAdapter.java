@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.exequieltiglao.retro_omdb.R;
+import com.exequieltiglao.retro_omdb.model.Search;
 import com.exequieltiglao.retro_omdb.model.SearchObjects;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,9 +20,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     private static final String TAG = "SearchAdapter";
 
-    private ArrayList<SearchObjects> searchObjectsArrayList;
+    private List<SearchObjects> searchObjectsArrayList;
 
-    public SearchAdapter(ArrayList<SearchObjects> mSearchObjectArrayList) {
+    public SearchAdapter(List<SearchObjects> mSearchObjectArrayList) {
         if (mSearchObjectArrayList == null) {
             this.searchObjectsArrayList = new ArrayList<>();
             Log.d(TAG, "SearchAdapter: .... make not null");
@@ -31,7 +33,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     }
 
-    public void searchObjectsArrayList(ArrayList<SearchObjects> searchArrayList) {
+    public void searchObjectsArrayList(List<SearchObjects> searchArrayList) {
         this.searchObjectsArrayList = searchArrayList;
     }
 

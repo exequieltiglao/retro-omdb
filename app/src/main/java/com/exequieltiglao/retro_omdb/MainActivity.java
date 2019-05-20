@@ -20,6 +20,7 @@ import com.exequieltiglao.retro_omdb.model.Search;
 import com.exequieltiglao.retro_omdb.model.SearchObjects;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,12 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<SearchObjects> mSearchArrayList = new ArrayList<>();
 
-    RecyclerView mRecyclerView;
-    SearchAdapter mSearchAdapter;
-    RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView mRecyclerView;
+    private SearchAdapter mSearchAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     TextView results;
-
     ApiInterface apiInterface;
 
     @Override
@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         results = findViewById(R.id.result);
 
         mRecyclerView = findViewById(R.id.recyclerview);
-        mSearchAdapter = new SearchAdapter(mSearchArrayList);
         mLayoutManager = new LinearLayoutManager(this);
+        mSearchAdapter = new SearchAdapter(mSearchArrayList);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -60,22 +60,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void getSearch() {
 
-        Call<List<Search>> call = apiInterface.getSearch("ironman", "c6ab0ab");
+        Call<Search> call = apiInterface.getSearch("iron man", "8eeefbee");
 
-        call.enqueue(new Callback<List<Search>>() {
+        call.enqueue(new Callback<Search>() {
             @Override
-            public void onResponse(Call<List<Search>> call, Response<List<Search>> response) {
+            public void onResponse(Call<Search> call, Response<Search> response) {
 
-                /* checks if result if unsuccessful */
-                if (!response.isSuccessful()) {
-
-                    Toast.makeText(MainActivity.this, " " + response.body(), Toast.LENGTH_SHORT).show();
-                    Log.d(TAG, "onResponse: " + response.body());
-                }
-
-                ArrayList<Search> search = new ArrayList<>();
-                search.addAll(response.body());
-                mSearchAdapter.searchObjectsArrayList(mSearchArrayList);
+                Search searches = response.body();
+                mSearchAdapter.searchObjectsArrayList(searches.getSearch());
                 mRecyclerView.setLayoutManager(mLayoutManager);
                 mRecyclerView.setAdapter(mSearchAdapter);
 
@@ -85,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Search>> call, Throwable t) {
+            public void onFailure(Call<Search> call, Throwable t) {
                 results.setText(" " + t.getMessage());
                 Toast.makeText(MainActivity.this, " " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "onFailure: failed.... " + t.getMessage());
