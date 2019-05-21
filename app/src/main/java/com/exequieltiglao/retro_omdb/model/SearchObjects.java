@@ -62,5 +62,5 @@ public class SearchObjects {
     public void setPoster(String poster) {
         this.poster = poster;
     }
-    
+
 }
