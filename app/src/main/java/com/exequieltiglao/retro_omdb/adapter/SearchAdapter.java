@@ -26,8 +26,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     private List<SearchObjects> searchObjectsArrayList;
 
-    private Context context;
-
     public SearchAdapter(List<SearchObjects> mSearchObjectArrayList) {
         if (mSearchObjectArrayList == null) {
             this.searchObjectsArrayList = new ArrayList<>();
@@ -80,17 +78,17 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.type.setText("Type: \t" + item.getType());
 //        holder.poster.setText(item.getPoster());
 
-        /* NOT WORKING */
-//        Glide.with(context)
-//                .load(item.getPoster())
-//                .into(holder.poster);
+        Glide.with(holder.itemView.getContext())
+                .load(item.getPoster())
+                .into(holder.poster);
 
     }
 
     @Override
     public int getItemCount() {
-        Log.d(TAG, "getItemCount: " + searchObjectsArrayList.size());
+        Log.d(TAG, "getItemCount: number of items ... " + searchObjectsArrayList.size());
         return searchObjectsArrayList.size();
+
     }
 
 }

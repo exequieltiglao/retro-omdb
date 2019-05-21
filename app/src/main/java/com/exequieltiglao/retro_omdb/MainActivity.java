@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
 
     EditText search;
-
     ApiInterface apiInterface;
 
     @Override
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Search> call, Throwable t) {
-                Toast.makeText(MainActivity.this, " " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, " " + t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.d(TAG, "onFailure: failed.... " + t.getMessage());
             }
         });
