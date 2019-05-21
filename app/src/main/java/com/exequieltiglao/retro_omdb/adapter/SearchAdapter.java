@@ -80,10 +80,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.type.setText("Type: \t" + item.getType());
 //        holder.poster.setText(item.getPoster());
 
-        /* NOT WORKING */
-//        Glide.with(context)
-//                .load(item.getPoster())
-//                .into(holder.poster);
+
 
     }
 
