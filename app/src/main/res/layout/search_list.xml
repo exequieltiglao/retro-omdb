@@ -7,16 +7,25 @@
     android:orientation="vertical"
     android:padding="7dp">
 
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="3dp">
 
+        <ImageView
+            android:id="@+id/poster"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
         <TextView
             android:id="@+id/search_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/poster"
+            android:layout_marginTop="10dp"
             android:text="Title: "
             android:textColor="#000"
             android:textSize="15sp" />
@@ -44,17 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/imdbID"
-            android:text="Type: "
-            android:textColor="#000"
             android:layout_marginBottom="5dp"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/poster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/type"
-            android:text="Poster: "
+            android:text="Type: "
             android:textColor="#000"
             android:textSize="15sp" />
 

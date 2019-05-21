@@ -60,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void getSearch(View view) {
         getSearch();
+
         Toast.makeText(this, "Searching...", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "getSearch: searching.... ");
     }
 
     public void getSearch() {
-
 
         Call<Search> call = apiInterface.getSearch(search.getText().toString(), "8eeefbee");
 
