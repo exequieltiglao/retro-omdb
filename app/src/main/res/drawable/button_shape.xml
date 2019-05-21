@@ -5,7 +5,7 @@
 
     <gradient
         android:endColor="#FFFFFF"
-        android:startColor="#79FFFFFF" />
+        android:startColor="#FFFFFF" />
 
     <size
         android:width="100dp"
