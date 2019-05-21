@@ -78,6 +78,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     @Override
     public int getItemCount() {
+        Log.d(TAG, "getItemCount: " + searchObjectsArrayList.size());
         return searchObjectsArrayList.size();
     }
 
