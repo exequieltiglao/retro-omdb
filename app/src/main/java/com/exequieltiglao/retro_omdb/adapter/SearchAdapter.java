@@ -1,5 +1,7 @@
 package com.exequieltiglao.retro_omdb.adapter;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import com.exequieltiglao.retro_omdb.R;
 import com.exequieltiglao.retro_omdb.model.SearchObjects;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -22,6 +25,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     private static final String TAG = "SearchAdapter";
 
     private List<SearchObjects> searchObjectsArrayList;
+
+    private Context context;
 
     public SearchAdapter(List<SearchObjects> mSearchObjectArrayList) {
         if (mSearchObjectArrayList == null) {
@@ -41,7 +46,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     static class SearchViewHolder extends RecyclerView.ViewHolder {
 
         TextView title, year, imdbID, type;
-        TextView poster;
+        ImageView poster;
 
         SearchViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,15 +69,21 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
 
         SearchObjects item = searchObjectsArrayList.get(position);
-        holder.title.setText(item.getTitle());
-        holder.year.setText(item.getYear());
-        holder.imdbID.setText(item.getImdbID());
-        holder.type.setText(item.getType());
-        holder.poster.setText(item.getPoster());
+        holder.title.setText("Title: \t " + item.getTitle());
+        holder.year.setText("Year: \t " + item.getYear());
+        holder.imdbID.setText("imdbID: \t" + item.getImdbID());
+        holder.type.setText("Type: \t" + item.getType());
+//        holder.poster.setText(item.getPoster());
+
+        /* NOT WORKING */
+//        Glide.with(context)
+//                .load(item.getPoster())
+//                .into(holder.poster);
 
     }
 
