@@ -41,7 +41,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     static class SearchViewHolder extends RecyclerView.ViewHolder {
 
         TextView title, year, imdbID, type;
-        ImageView poster;
+        TextView poster;
 
         SearchViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,7 +72,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.year.setText(item.getYear());
         holder.imdbID.setText(item.getImdbID());
         holder.type.setText(item.getType());
-        //add poster
+        holder.poster.setText(item.getPoster());
 
     }
 

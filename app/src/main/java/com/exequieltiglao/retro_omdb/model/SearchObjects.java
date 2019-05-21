@@ -13,9 +13,9 @@ public class SearchObjects {
     @SerializedName("Type")
     private String type;
     @SerializedName("Poster")
-    private Integer poster;
+    private String poster;
 
-    public SearchObjects(String title, String year, String imdbID, String type, Integer poster) {
+    public SearchObjects(String title, String year, String imdbID, String type, String poster) {
         this.title = title;
         this.year = year;
         this.imdbID = imdbID;
@@ -55,11 +55,11 @@ public class SearchObjects {
         this.type = type;
     }
 
-    public Integer getPoster() {
+    public String getPoster() {
         return poster;
     }
 
-    public void setPoster(Integer poster) {
+    public void setPoster(String poster) {
         this.poster = poster;
     }
 

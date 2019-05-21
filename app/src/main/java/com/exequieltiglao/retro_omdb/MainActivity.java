@@ -11,6 +11,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,8 +22,6 @@ import com.exequieltiglao.retro_omdb.model.Search;
 import com.exequieltiglao.retro_omdb.model.SearchObjects;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
 
     TextView results;
+    EditText search;
+
     ApiInterface apiInterface;
 
     @Override
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         results = findViewById(R.id.result);
+        search = findViewById(R.id.search_movie);
 
         mRecyclerView = findViewById(R.id.recyclerview);
         mLayoutManager = new LinearLayoutManager(this);
@@ -55,12 +58,16 @@ public class MainActivity extends AppCompatActivity {
 
         apiInterface = retrofit.create(ApiInterface.class);
 
+    }
+
+    public void getSearch(View view) {
         getSearch();
+        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
     }
 
     public void getSearch() {
 
-        Call<Search> call = apiInterface.getSearch("iron man", "8eeefbee");
+        Call<Search> call = apiInterface.getSearch(search.getText().toString(), "8eeefbee");
 
         call.enqueue(new Callback<Search>() {
             @Override
@@ -86,5 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
 }
