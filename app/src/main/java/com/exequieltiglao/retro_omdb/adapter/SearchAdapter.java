@@ -83,8 +83,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: title clicked... " + item.getTitle());
-
-
+                Toast.makeText(holder.itemView.getContext(), "Movie Title: " + item.getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
 
