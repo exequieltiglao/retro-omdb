@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="2dp"
@@ -7,57 +8,64 @@
     android:orientation="vertical"
     android:padding="7dp">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="3dp">
 
         <ImageView
             android:id="@+id/poster"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColor="#000"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/search_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/poster"
             android:layout_marginTop="10dp"
             android:text="Title: "
             android:textColor="#000"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/poster" />
 
         <TextView
             android:id="@+id/year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/search_title"
             android:text="Year: "
             android:textColor="#000"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_title" />
 
         <TextView
             android:id="@+id/imdbID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/year"
             android:text="imdbID: "
             android:textColor="#000"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/year" />
 
         <TextView
             android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imdbID"
             android:layout_marginBottom="5dp"
             android:text="Type: "
             android:textColor="#000"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imdbID" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

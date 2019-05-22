@@ -23,7 +23,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
 
     private static final String TAG = "SearchAdapter";
-
     private List<SearchObjects> searchObjectsArrayList;
 
     public SearchAdapter(List<SearchObjects> mSearchObjectArrayList) {
@@ -61,10 +60,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     @NonNull
     @Override
     public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_list, parent, false);
         return new SearchViewHolder(view);
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -76,7 +73,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.year.setText("Year: \t " + item.getYear());
         holder.imdbID.setText("imdbID: \t" + item.getImdbID());
         holder.type.setText("Type: \t" + item.getType());
-//        holder.poster.setText(item.getPoster());
 
         Glide.with(holder.itemView.getContext())
                 .load(item.getPoster())
@@ -88,7 +84,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     public int getItemCount() {
         Log.d(TAG, "getItemCount: number of items ... " + searchObjectsArrayList.size());
         return searchObjectsArrayList.size();
-
     }
 
 }
