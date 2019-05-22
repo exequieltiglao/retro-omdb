@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.exequieltiglao.retro_omdb.R;
@@ -66,9 +67,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final SearchViewHolder holder, int position) {
 
-        SearchObjects item = searchObjectsArrayList.get(position);
+        final SearchObjects item = searchObjectsArrayList.get(position);
         holder.title.setText("Title: \t " + item.getTitle());
         holder.year.setText("Year: \t " + item.getYear());
         holder.imdbID.setText("imdbID: \t" + item.getImdbID());
@@ -77,6 +78,15 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         Glide.with(holder.itemView.getContext())
                 .load(item.getPoster())
                 .into(holder.poster);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: title clicked... " + item.getTitle());
+
+
+            }
+        });
 
     }
 
