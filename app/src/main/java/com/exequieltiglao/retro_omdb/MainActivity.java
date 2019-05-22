@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /* btn_search is clicked */
     public void getSearch(View view) {
         getSearch();
 
@@ -79,11 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Search searches = response.body();
                 mSearchAdapter.searchObjectsArrayList(searches.getSearch());
-                mRecyclerView.setLayoutManager(mLayoutManager);
-                mRecyclerView.setAdapter(mSearchAdapter);
 
-                mRecyclerView.setHasFixedSize(true);
-                mSearchAdapter.notifyDataSetChanged();
+                getAdapterResult();
 
             }
 
@@ -94,6 +93,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void getAdapterResult() {
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mSearchAdapter);
+
+        mRecyclerView.setHasFixedSize(true);
+        mSearchAdapter.notifyDataSetChanged();
     }
 
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.exequieltiglao.retro_omdb.R;
@@ -23,7 +24,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
 
     private static final String TAG = "SearchAdapter";
-
     private List<SearchObjects> searchObjectsArrayList;
 
     public SearchAdapter(List<SearchObjects> mSearchObjectArrayList) {
@@ -61,26 +61,31 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     @NonNull
     @Override
     public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_list, parent, false);
         return new SearchViewHolder(view);
-
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final SearchViewHolder holder, int position) {
 
-        SearchObjects item = searchObjectsArrayList.get(position);
+        final SearchObjects item = searchObjectsArrayList.get(position);
         holder.title.setText("Title: \t " + item.getTitle());
         holder.year.setText("Year: \t " + item.getYear());
         holder.imdbID.setText("imdbID: \t" + item.getImdbID());
         holder.type.setText("Type: \t" + item.getType());
-//        holder.poster.setText(item.getPoster());
 
         Glide.with(holder.itemView.getContext())
                 .load(item.getPoster())
                 .into(holder.poster);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: title clicked... " + item.getTitle());
+                Toast.makeText(holder.itemView.getContext(), "Movie Title: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -88,7 +93,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     public int getItemCount() {
         Log.d(TAG, "getItemCount: number of items ... " + searchObjectsArrayList.size());
         return searchObjectsArrayList.size();
-
     }
 
 }
