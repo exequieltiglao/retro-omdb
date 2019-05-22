@@ -57,11 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     /* btn_search is clicked */
     public void getSearch(View view) {
-        getSearch();
 
+        getSearch();
         Toast.makeText(this, "Searching...", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "getSearch: searching.... ");
     }
@@ -79,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "onResponse: .... " + response.body());
                 }
 
+                /* fetching data from internet then display */
                 Search searches = response.body();
                 mSearchAdapter.searchObjectsArrayList(searches.getSearch());
-
-                getAdapterResult();
+                getAdapterResult(); //calls getAdapterResult to be displayed in mRecyclerview
 
             }
 

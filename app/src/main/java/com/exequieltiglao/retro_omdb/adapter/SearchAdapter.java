@@ -34,8 +34,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             this.searchObjectsArrayList = mSearchObjectArrayList;
             Log.d(TAG, "SearchAdapter: .... null");
         }
-
     }
+
 
     public void searchObjectsArrayList(List<SearchObjects> searchArrayList) {
         this.searchObjectsArrayList = searchArrayList;
@@ -82,8 +82,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: title clicked... " + item.getTitle());
-                Toast.makeText(holder.itemView.getContext(), "Movie Title: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onClick: title clicked... " + item.getTitle() + ", " + item.getYear());
+
+                Toast.makeText(holder.itemView.getContext(),
+                        "Movie Title: " + item.getTitle() + "\nYear: " + item.getYear(),
+                        Toast.LENGTH_LONG).show();
             }
         });
 
@@ -91,8 +94,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     @Override
     public int getItemCount() {
+
         Log.d(TAG, "getItemCount: number of items ... " + searchObjectsArrayList.size());
         return searchObjectsArrayList.size();
-    }
 
+    }
 }
