@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.recyclerview);
         mLayoutManager = new LinearLayoutManager(this);
-        mLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false); //IF VERTICAL
+        //  mLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false); //IF VERTICAL
         mSearchAdapter = new SearchAdapter(mSearchArrayList);
 
         Retrofit retrofit = new Retrofit.Builder()
