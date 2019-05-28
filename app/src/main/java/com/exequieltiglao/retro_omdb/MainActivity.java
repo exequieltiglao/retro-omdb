@@ -13,9 +13,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.exequieltiglao.retro_omdb.adapter.SearchAdapter;
 import com.exequieltiglao.retro_omdb.api.ApiInterface;
 import com.exequieltiglao.retro_omdb.model.Search;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.recyclerview);
         mLayoutManager = new LinearLayoutManager(this);
+        mLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false); //IF VERTICAL
         mSearchAdapter = new SearchAdapter(mSearchArrayList);
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -81,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 /* fetching data from internet then display */
                 Search searches = response.body();
                 mSearchAdapter.searchObjectsArrayList(searches.getSearch());
-                getAdapterResult(); //calls getAdapterResult to be displayed in mRecyclerview
+                getAdapterResult(); //calls getAdapterResult, to be displayed in mRecyclerview
 
             }
 

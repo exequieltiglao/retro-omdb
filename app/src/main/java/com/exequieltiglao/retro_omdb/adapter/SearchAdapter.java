@@ -36,7 +36,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         }
     }
 
-
     public void searchObjectsArrayList(List<SearchObjects> searchArrayList) {
         this.searchObjectsArrayList = searchArrayList;
     }
@@ -85,8 +84,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
                 Log.d(TAG, "onClick: title clicked... " + item.getTitle() + ", " + item.getYear());
 
                 Toast.makeText(holder.itemView.getContext(),
-                        "Movie Title: " + item.getTitle() + "\nYear: " + item.getYear(),
-                        Toast.LENGTH_LONG).show();
+                        "Movie Title: " + item.getTitle() +
+                                "\nYear: " + item.getYear(),
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
