@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<Search> call, Throwable t) {
                 Toast.makeText(MainActivity.this, " " + t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.d(TAG, "onFailure: failed.... " + t.getMessage());
+
             }
         });
 
